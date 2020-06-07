@@ -1,7 +1,10 @@
 import React from 'react'
+import CharactersIndex from './CharactersIndex'
 
-export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+const App = (props) => {
+  return (
+    <CharactersIndex />
+  )
 }
 
 export default App
