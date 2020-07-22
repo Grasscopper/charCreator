@@ -8,6 +8,11 @@ class Api::V1::CharactersController < ApplicationController
     render json: Character.create(char_params)
   end
 
+  def destroy
+    Character.find(params["id"]).delete
+    render json: Character.all
+  end
+
   def char_params
     params.require(:character).permit(:id, :name, :bio, :stats)
   end

@@ -2,6 +2,12 @@ form {
   width: 200px;
 }
 
+button {
+  border: solid;
+  padding: 5px;
+  background-color: #EFEFEF;
+}
+
 .grid-container {
   margin-left: 20px;
 }

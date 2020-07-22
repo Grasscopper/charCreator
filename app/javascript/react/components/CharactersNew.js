@@ -18,6 +18,11 @@ const CharactersNew = (props) => {
   let charSubmit = (event) => {
     event.preventDefault()
     props.postNewChar(formPayload)
+    setFormPayload({
+      name: "",
+      bio: "",
+      stats: ""
+    })
   }
 
   return (

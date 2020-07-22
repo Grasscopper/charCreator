@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   namespace :api do
     namespace :v1 do
-      resources :characters, only: [:index, :create]
+      resources :characters, only: [:index, :create, :destroy]
     end
   end
 end
