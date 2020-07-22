@@ -19,8 +19,8 @@ const CharactersIndex = (props) => {
     .then((response) => {
       return response.json()
     })
-    .then((characters) => {
-      setChars(characters)
+    .then((body) => {
+      setChars(body)
     })
     .catch((error) => {
       console.error(`Error fetching characters: ${error.message}`)
@@ -49,10 +49,10 @@ const CharactersIndex = (props) => {
     .then((response) => {
       return response.json()
     })
-    .then((character) => {
+    .then((body) => {
       setChars([
         ...chars,
-        character
+        body
       ])
     })
     .catch((error) => {
@@ -60,10 +60,39 @@ const CharactersIndex = (props) => {
     })
   }
 
+  const deleteChar = (charID) => {
+    fetch(`/api/v1/characters/${charID}`, {
+      credentials: "same-origin",
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => {
+      if (response.ok){
+        return response
+      } else {
+        let errorMessage = `${response.status}: ${response.statusText}`
+        let error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then((response) => {
+      return response.json()
+    })
+    .then((body) => {
+      setChars(body)
+    })
+    .catch((error) => {
+      console.error(`Error deleting character: ${error.message}`)
+    })
+  }
+
   let characters = chars.map((char) => {
     return (
       <>
-      <CharacterTile key={char.id} char={char} />
+      <CharacterTile key={char.id} char={char} deleteChar={deleteChar}/>
       <p>----------------------</p>
       </>
     )
