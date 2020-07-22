@@ -8,6 +8,14 @@ button {
   background-color: #EFEFEF;
 }
 
+#edit-button {
+  margin-right: 15px;
+}
+
+#edit-submit-button {
+  margin-bottom: 15px;
+}
+
 .grid-container {
   margin-left: 20px;
 }
