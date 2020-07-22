@@ -3,7 +3,9 @@ import CharactersIndex from './CharactersIndex'
 
 const App = (props) => {
   return (
+    <div className="grid-container">
     <CharactersIndex />
+    </div>
   )
 }
 
