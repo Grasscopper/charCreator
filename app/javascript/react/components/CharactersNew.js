@@ -26,6 +26,7 @@ const CharactersNew = (props) => {
   }
 
   return (
+    <>
     <form autoComplete="off" onSubmit={charSubmit}>
     <label htmlFor="name">Name</label>
     <input
@@ -53,6 +54,8 @@ const CharactersNew = (props) => {
     />
     <input id="submit" type="submit" value="Submit"/>
     </form>
+    <p>----------------------</p>
+    </>
   )
 }
 

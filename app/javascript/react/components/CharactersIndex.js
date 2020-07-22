@@ -89,10 +89,40 @@ const CharactersIndex = (props) => {
     })
   }
 
+  const editChar = (charID, charEdit) => {
+    fetch(`/api/v1/characters/${charID}`, {
+      credentials: "same-origin",
+      method: "PATCH",
+      body: JSON.stringify(charEdit),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+    .then((response) => {
+      if (response.ok) {
+        return response
+      } else {
+        let errorMessage = `${response.status}: ${response.statusText}`
+        let error = new Error(errorMessage)
+        throw(error)
+      }
+    })
+    .then((response) => {
+      return response.json()
+    })
+    .then((body) => {
+      setChars(body)
+    })
+    .catch((error) => {
+      console.error(`Error editing game: ${error.message}`)
+    })
+  }
+
   let characters = chars.map((char) => {
     return (
       <>
-      <CharacterTile key={char.id} char={char} deleteChar={deleteChar}/>
+      <CharacterTile key={char.id} char={char} delete={deleteChar} edit={editChar}/>
       <p>----------------------</p>
       </>
     )
