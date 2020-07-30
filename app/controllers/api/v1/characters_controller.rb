@@ -1,12 +1,16 @@
 class Api::V1::CharactersController < ApplicationController
    protect_from_forgery with: :null_session, if: Proc.new {|c| c.request.format.json? }
+
   def index
     render json: Character.all.order(:id)
   end
 
+  def show
+    render json: Character.find(params[:id])
+  end
+
   def create
-    newChar = Character.create(char_params)
-    render json: newChar
+    render json: Character.create(char_params)
   end
 
   def destroy
