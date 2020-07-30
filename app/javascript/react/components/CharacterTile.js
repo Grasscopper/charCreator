@@ -3,9 +3,9 @@ import React, { useState } from 'react'
 const CharacterTile = (props) => {
   let [editing, setEditing] = useState(false)
   let [editedGame, setEditedGame] = useState({
-    name: "",
-    bio: "",
-    stats: ""
+    name: props.char.name,
+    bio: props.char.bio,
+    stats: props.char.stats
   })
 
   function charDelete(event) {
@@ -16,6 +16,7 @@ const CharacterTile = (props) => {
   function submitEdit(event) {
     event.preventDefault()
     props.edit(props.char.id, editedGame)
+    setEditing(false)
   }
 
   function editForm(event) {
@@ -59,7 +60,7 @@ const CharacterTile = (props) => {
     value={editedGame.stats}
     />
 
-    <input type="submit" value="Submit" id="edit-submit-button" />
+    <input type="submit" value="Submit Edit" id="edit-submit-button" />
     </form>
   }
 
