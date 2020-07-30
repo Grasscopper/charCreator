@@ -52,7 +52,7 @@ const CharactersNew = (props) => {
     onChange={update}
     value={formPayload.stats}
     />
-    <input id="submit" type="submit" value="Submit"/>
+    <input id="submit" type="submit" value="Submit Character"/>
     </form>
     <p>----------------------</p>
     </>
