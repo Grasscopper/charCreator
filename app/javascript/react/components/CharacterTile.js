@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const CharacterTile = (props) => {
   let [editing, setEditing] = useState(false)
@@ -66,7 +67,9 @@ const CharacterTile = (props) => {
 
   return (
     <>
-    <p>Name: {props.char.name}</p>
+    <Link to={`/characters/${props.char.id}`}>
+      <h2>{props.char.name}</h2>
+    </Link>
     <p>Bio: {props.char.bio}</p>
     <p>Stats: {props.char.stats}</p>
     {form}

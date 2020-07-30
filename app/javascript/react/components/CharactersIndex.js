@@ -129,10 +129,10 @@ const CharactersIndex = (props) => {
   })
 
   return (
-    <>
+    <div className="grid-container">
     <CharactersNew postNewChar={postNewChar}/>
     <div>{characters}</div>
-    </>
+    </div>
   )
 }
 
